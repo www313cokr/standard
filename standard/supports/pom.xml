@@ -7,6 +7,22 @@
 	<packaging>pom</packaging>
 	<description>		</description>
 	<modules>
-		<module>apache</module>
+		<module>supports/apache</module>
+		<module>supports/Junit</module>
+		<module>supports/comet</module>
+		<module>supports/egov</module>
+		<module>supports/flex</module>
+		<module>supports/hibernate</module>
+		<module>supports/mybatis</module>
+		<module>supports/scheduler</module>
+		<module>supports/spring</module>
+		<module>supports/struts</module>
+		<module>supports/template</module>
 	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.0.0.RELEASE</spring.version>
+	</properties>
+
 </project>

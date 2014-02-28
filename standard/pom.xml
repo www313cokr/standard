@@ -48,6 +48,13 @@
 		</developer>
 	</developers>
 
+	<mailingLists>
+		<mailingList>
+			<name>LeeDongMin</name>
+			<post>spear79@hotmail.com</post>
+		</mailingList>
+	</mailingLists>
+
 	<licenses>
 		<license>
 			<name>Apache License Version 2.0</name>
