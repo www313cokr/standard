@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+th:with=
+"path = ${#httpServletRequest.servletPath},
+ui_title = ${#strings.startsWith(path, '/board/') ? 'Java Board' : ''},
+ui_title = ${#strings.startsWith(path, '/board/write/') ? 'Write' : ui_title}"
+>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv='cache-control' content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv='pragma' content="no-cache, no-store" />
+<meta http-equiv='expires' content="-1" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<meta name="autocomplete" content="off" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="description" th:content="#{ui.description(${ui_title})}" />
+<title th:inline="text">[[#{ui.title(${ui_title})}]]</title>
+<script type="text/javascript" data-th-src="#{url.static} + '/js/jquery-1.10.2.min.js'"></script>
+<script type="text/javascript" data-th-src="@{/js/common.js}"></script>
+<!--/* [if lt IE 9] */--><script type="text/javascript" data-th-src="#{url.static} + '/js/html5shiv.js'"></script><!--/* [endif] */-->
+<script type="text/javascript" data-th-src="#{url.static} + '/m/id/member/javascript/account.js'"></script>
+<link rel="apple-touch-icon-precomposed" type="image/png" data-th-href="#{url.static} + '/img/home@2x.png'" />
+<!-- <link rel="shortcut icon" type="image/png" data-th-href="#{url.static} + '/img/home@2x.png'" /> -->
+<link rel="stylesheet" data-th-href="#{url.static} + '/css/member.css'" />
+</head>
+
+<body>
+<div id="container">
+	<header id="header" th:with="ui_subtitle = ${#strings.startsWith(#httpServletRequest.servletPath, '/board/') ? 'subtitle' : ''}">
+		<h1>
+			<a data-th-href="#{url.community}" class="logo">Java board</a>
+			<span th:text="${ui_title}" th:class="${ui_subtitle}"></span>
+		</h1>
+	</header>
+	<div id="contents" layout:fragment="content"></div>
+	<footer id="footer">&copy; Java Board</footer>
+</div>
+</body>
+</html>

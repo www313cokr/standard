@@ -1,0 +1,35 @@
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="/layout/defaultLayout" layout:fragment="content"
+	th:with="valA = ${#strings.startsWith(#httpServletRequest.servletPath, '/error') ? 1 : 2}">
+	
+	<a style="cursor:">test</a> 한글이다1
+	<h1>message 국제화</h1>
+	<h2>[webRoot]/public-resources/message/message_ko.properties의
+		message_ko.properties</h2>
+	<h3>data-th-text 또는 th:text와 같이 사용이 가능</h3>
+	<div data-th-text="#{test1}">단순 메세지 처리</div>
+	<div data-th-text="#{test2('가','나')}">값을 받아 처리하는 경우</div>
+
+	<h1>환경별 properties 호출하기</h1>
+	<h2>[webRoot]/public-resources/message/clientenv-[망이름]_ko.properties</h2>
+	<div data-th-text="#{url.static}">호출</div>
+
+	<h1>주소처리</h1>
+	<div th:text="${#httpServletRequest.servletPath}">servletPath</div>
+
+
+	<h1>변수 선언</h1>
+	<h2>변수 선언된 값은 해당 태그 하위에서 사용 가능 (최상단 html 태그에 valA를 선언하였음)</h2>
+	<h3>관련 정보
+		(http://www.thymeleaf.org/doc/html/Using-Thymeleaf.html#strings)</h3>
+
+	<div th:text="${valA}"></div>
+
+	<div
+		th:with="valA = ${#strings.startsWith(#httpServletRequest.servletPath, '/test') ? 2 : 1}">
+		같은값이 중첩되면 바로 위에 있는 값을 사용
+		<div th:text="${valA}"></div>
+	</div>
+
+</div>
